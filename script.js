@@ -143,3 +143,4 @@ function processarDesconto(preco, desconto) {
     console.log("Tudo treta");
   }
 }
+processarDesconto(100, 5);
