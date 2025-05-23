@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+
+<body>
+    <script>
+        // Exercicio 1
+        let paises = ["Albania", "Bolivia", 'Canadá', 'Dinamarca', 'Etiópia', 'Finlândia', 'Alemanha', 'Hungria', 'Irlanda', 'Japão', 'Quênia']
+
+        for (let i = 0; i < paises.length; i++) {
+            console.log(paises[i]);
+        } // Exibe todos os países
+
+
+        function numeroDePaises() {
+            return paises.length;
+        }
+
+        console.log("Numero de Paises=" + numeroDePaises())// Exibe o número de países
+
+
+
+        paises.unshift("Portugal") // Adiciona Portugal no inicio do array
+        console.log(paises)
+
+        paises.push("Espanha") // Adiciona Espanha no final do array
+        console.log(paises)
+
+        //    exercicio devolve os 3 ultimos paises 
+
+        function ultimosPaises() {
+            return paises.slice(-3);
+        }
+
+        console.log("Ultimos 3 Paises = " + ultimosPaises())
+        // outro metodo de apresentar os ultimos 3 paises
+
+
+        console.log(paises.slice(paises.length - 3)) // Exibe os últimos 3 países
+
+        // ------------------------------
+
+
+
+        paises.join(" - ") // Converte o array em uma string, separando os elementos por " - "
+        console.log(paises.join(" - "))
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
