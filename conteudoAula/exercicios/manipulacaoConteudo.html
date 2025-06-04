@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom - Manipulação de conteúdo</title>
+</head>
+
+<body>
+
+
+
+
+
+
+    <script>
+
+        // ⁄⁄document.body.insertAdjacentElement('afterbegin', document.createElement('h1'));
+
+        const container = document.createElement('div');
+        document.body.append(container);
+
+        container.innerHTML = `<ul><li>Exemplo 01</li><li>Exemplo02</li></ul><p>isto é uma div</p>`;
+
+        const itemsLista = document.querySelectorAll("li");
+        itemsLista[0].insertAdjacentHTML("afterend", "<li>Exemplo 03</li>");
+
+        const paragrafo = document.querySelector("p");
+        paragrafo.remove();
+    </script>
+
+</body>
+
+</html>

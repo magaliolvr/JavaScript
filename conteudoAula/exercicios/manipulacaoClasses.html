@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom - Manipulação de classes</title>
+</head>
+
+<body>
+
+
+
+
+
+
+    <script>
+
+        // ⁄⁄document.body.insertAdjacentElement('afterbegin', document.createElement('h1'));
+
+        const span1 = document.createElement('span');
+        document.body.append(span1);
+
+        span1.insertAdjacentHTML("afterbegin", "Alguma coisa");
+
+
+        span1.classList.add('teste');
+        span1.addEventListener("click", () => span1.classList.add('class-js'));
+        span1.addEventListener("click", () => span1.classList.toggle('teste'));
+        // () => serve para criar uma função anônima, ou seja, uma função que não tem nome e é usada apenas uma vez.
+
+
+
+        // criar botao
+
+        const botao = document.createElement('button');
+        botao.textContent = "Clique aqui";
+        document.body.append(botao);
+
+        botao.addEventListener('mouseover', () => botao.classList.add('class-js'));
+        botao.addEventListener("mouseout", () => botao.classList.remove('class-js'));
+
+
+        botao.classList.add('teste2');
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

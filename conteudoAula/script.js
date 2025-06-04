@@ -338,3 +338,5 @@ console.log(funçãoAnonima2(10, 20)); // chama a função
 console.log("CLOSURES");
 
 // closures são funções que têm acesso ao escopo de uma função externa mesmo depois que a função externa foi executada
+
+// EVENTS
