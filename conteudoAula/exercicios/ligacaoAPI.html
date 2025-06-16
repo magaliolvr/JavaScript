@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+
+<body>
+    <script>
+        // fetch("https://cataas.com/api/cats")
+        //     .then((resposta) => resposta.json())
+        //     .then((gatinhos) => {
+        //         gatinhos.forEach((gatinho) => {
+        //             escreverIdPagina(gatinho.id);
+        //         });
+
+        //     });
+        //             const escreverIdPagina = (id) => document.body.append(id);
+
+        // mesma solução, mas com async/await
+        // fetch é uma função assíncrona que retorna uma promise
+        // que resolve com a resposta da requisição HTTP.
+        // A função fetch é usada para fazer requisições HTTP e retorna uma promise.
+        // A função resposta.json() também é assíncrona e retorna uma promise que resolve com o corpo da resposta
+        // em formato JSON.
+        // A função escreverIdPagina é uma função que recebe um id e escreve no corpo do documento HTML.
+        // A função gerarGatosId é uma função assíncrona que faz uma requisição para a API de gatos,
+        // obtém a lista de gatos e escreve os ids no corpo do documento HTML.
+        // A função gerarGatosId é chamada para iniciar o processo de obtenção dos ids dos gatos.
+        // A função escreverIdPagina é responsável por escrever o id do gato no corpo do documento HTML.
+        // A função gerarGatosId é uma função assíncrona que faz uma requisição para a API de gatos,
+        // obtém a lista de gatos e escreve os ids no corpo do documento HTML.
+
+        const escreverIdPagina = (id) => document.body.append(id);
+
+        const gerarGatosId = async () => {
+            const resposta = await fetch("https://cataas.com/api/cats");
+            const gatinhos = await resposta.json();
+            gatinhos.forEach((gatinho) => {
+                escreverIdPagina(gatinho.id);
+            });
+        };
+
+
+    </script>
+</body>
+
+</html>

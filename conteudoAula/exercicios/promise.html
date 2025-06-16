@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script>
+
+        // PROMISSE
+        console.log('Exemplo de Promise');
+        // Exercício:
+
+        const soma = (a, b) => {
+            const resultadoSoma = a + b;
+            const promise = new Promise((resolve, reject) => {
+                if (resultadoSoma % 2 === 0) {
+                    resolve(resultadoSoma);
+                } else {
+                    reject('Números não são pares');
+                }
+
+            });
+
+            promise.then((resultadoResolve) => console.log(resultadoResolve)).catch((erroReject) => console.log(erroReject));
+
+            // promise so deve ser usada dentro da função(escopo)
+        }
+
+        soma(2, 2);
+
+
+
+
+        // PROMISSE ASYNC 
+
+        console.log('Exemplo de Promise com Async/Await');
+
+
+        // Exercício:
+        //         Cria uma função assíncrona com as seguintes características:
+        // - Ter uma função que faça a soma de 2
+        // valores, recebidos por parâmetros;
+        // - Se a soma for par, deverá ficar resolvida;
+        // - Se a soma for ímpar, deverá ser rejeitada.
+
+
+
+        const soma2 = async (a, b) => {
+            const resultadoSoma = a + b;
+            const promise = new Promise((resolve, reject) => {
+                if (resultadoSoma % 2 === 0) {
+                    resolve(resultadoSoma);
+                } else {
+                    reject('Números não são pares');
+                }
+
+            });
+
+            try {
+                const resultado = await promise; // espera a promise ser resolvida ou rejeitada
+                console.log(`Resultado da soma: ${resultado}`);
+            } catch (error) {
+                console.error(error); // captura o erro se a promise for rejeitada
+            }
+            // promise so deve ser usada dentro da função(escopo)
+        }
+
+        soma(2, 2);
+
+
+
+
+    </script>
+
+</body>
+
+</html>

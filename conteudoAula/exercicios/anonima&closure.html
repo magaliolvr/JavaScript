@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função anonima e closures</title>
+</head>
+
+<body>
+
+    <script>
+        (function () {
+            console.log('Isto foi rápido demais!');
+        })(); // Exibe a mensagem
+
+        // isto é uma IIFE (Immediately Invoked Function Expression)
+        // IIFE é uma função que é definida e invocada imediatamente, sem a necessidade de ser chamada posteriormente.
+
+
+        // Exemplo de closure
+
+
+        const formulario = function (campo) {
+            return function (name) {
+                return `${campo}: ${name}`; // tem de se usar `` para interpolação de strings, caso contratio não funciona como concatenação
+            };
+        }
+
+        console.log(formulario("Nome")("Magali")); // Exibe a mensagem com o nome
+
+    </script>
+
+</body>
+
+</html>

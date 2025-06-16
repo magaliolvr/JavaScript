@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo eventos DOM</title>
+</head>
+
+<body>
+    <button type="button">Elementos</button>
+    <p id="teste">Teste</p>
+    <button type="button">Primeiro</button>
+    <div class="container">
+        <h1><time>00:00:00</time></h1>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <script>
+
+
+        // 1
+        // const butoes = document.getelementby('button'); ALTERNATIVA
+        const botoes = document.getElementsByTagName('button');
+
+        console.log(botoes);
+
+        // 2
+
+        const botoesDivClass = document.querySelectorAll('div.container button');
+        console.log(botoesDivClass);
+
+        // 3
+        const pId = document.querySelector('#teste');
+        // const pId = document.getElementById('teste'); ALTERNATIVA
+
+        console.log(pId);
+
+
+    </script>
+</body>
+
+</html>

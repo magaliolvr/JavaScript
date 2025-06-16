@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - conteudo de aula</title>
+</head>
+
+
+
+<body onload="console.log('carregado')">
+
+    <!-- INLINE EVENT -->
+    <button id="juca" onclick="alert('teste')" onmouseout="console.log('mouseout')"
+        onmouseover="console.log('mouseover')">UM BOTAO; VARIOS TESTES INLINE</button>
+
+
+
+    <!-- EVENTS HANDLER  -->
+    <button id="juca2" onclick="mostrarMensagem()">UM BOTAO TESTE HANDLER</button>
+
+
+
+
+
+    <!-- EXERCICIOS EVENTS -->
+
+    <!-- PT 1 -->
+
+    <div id="exercicio1" style="border:1px solid; padding: 16px; margin: 24px; background-color: lightblue;">
+        <h2>EXERCICIO EVENTS 1</h2>
+        <button onclick="console.log('clicado')">CLIQUE AQUI</button>
+
+
+        <!-- PT 2 -->
+        <form onsubmit="console.log('FORM SUBMIT')" onreset="console.log('FORM RESET')">
+            <label for="name">Name</label>
+            <input onfocus="eventOnFocus()" onchange="console.log('on change')" type="text" id="name" name="name"
+                placeholder="Digite seu nome aqui">
+            <br><br>
+            <label for="email">Email</label>
+            <input onblur="eventOnBlur()" type="email" id="email" name="email" placeholder="Digite seu email aqui">
+            <br><br>
+            <button type="submit" onmouseover="consoleLog()">Submit</button>
+            <button type="reset" onmouseout="consoleLog2()">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        // EVENT HANDLER EXERCICIO PT 3
+        const consoleLog = () => {
+            console.log('MOUSEOVER ');
+        }
+
+        const consoleLog2 = () => {
+            console.log('MOUSEOUT');
+        }
+
+        // EVENT HANDLER EXERCICIO PT 4
+        const eventOnFocus = () => {
+            console.log('FOCUS');
+        }
+
+        const eventOnBlur = () => {
+            console.log('BLUR');
+        }
+
+
+        // ---------------------------
+
+        // EVENT HANDLER
+        const mostrarMensagem = () => {
+            alert('teste');
+        }
+
+    </script>
+
+    <script src="/conteudoAula/script2.js">
+
+
+    </script>
+</body>
+
+</html>
