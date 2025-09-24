@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho final JS</title>
+</head>
+
+<body>
+    <h1>Trabalho final</h1>
+    <main>
+
+        <!-- Trabalho final -->
+        <!-- Considerações
+            - Nice-to-have:
+            ○ Usem e abusem de funções da versão ES6;
+            ○ Não se esqueçam dos princípios da programação funcional:
+            ■ Criar funções para cumprir um propósito e um objectivo;
+            ■ Código organizado;
+            ■ Variáveis e funções com nomes relevantes.
+            ○ Quanto maior a diversidade de código que mostrarem, melhor serão avaliados.
+            - Dicas:
+            ○ Comecem por decompor o exercício em pequenas tarefas. -->
+
+        <!-- - Criar um ficheiro html com uma tag script;
+            - Criar uma class chamada Ecommerce;
+            - Criar os seguintes métodos para a class:
+            ○ addProduct: aceita um produto e o adicione à lista de produtos;
+            ○ setProductPrice:
+            ■ Aceita 2 parametros: productId e price;
+            ■ Deve actualizar o produto com o preço novo (price).
+            ○ getAllProducts: devolve a lista de todos os produtos;
+            ○ getAllProductsNames: devolve uma string com todos os nomes dos produtos, separados por ponto e virgula “;” ;
+            ○ getProductById: aceita um id de produto e devolve esse produto;
+            ○ getProductsByPrice:
+            ■ aceita 2 parametros: initialPrice e finalPrice
+            ■ Devolve os produtos que sejam iguais ou superiores a initialPrice e menores ou iguais a finalPrice;
+            ○ addProductToCart: aceita um produto e adiciona esse produto ao carrinho de compras;
+            ○ getCartTotalPrice: devolve a soma de todos os produtos do carrinho;
+            - Um produto é composto pelos campos: name, price, id;
+            - O carrinho de compras é um array de produtos; -->
+
+        <!-- Ecommerce homepage
+            - Criar um ficheiro html com uma tag script;
+            - Faz load dos dados da API: 'https://fakestoreapi.com/products'
+            - Criar dinamicamente uma grelha de produtos, utilizando o nome e imagem dos produtos carregados;
+            - Adicionalmente, a cada produto deve ser gerado um botão com o texto “Add to cart”. Este botão deverá ter uma função
+            ao ser clicado que adiciona um produto ao carrinho. Para isso usem o endpoint:
+            ○ Enviar para o endpoint https://fakestoreapi.com/carts/7 e o method deverá ser de update (PUT);
+            ○ Deverás enviar para o endpoint os seguintes campos:
+            ■ userId: um número;
+            ■ date: a data actual com o formato 2019-12-10;
+            ■ products: um array de produtos, em que cada produto é um object composto por:
+            ● productId: um número;
+            ● quantity: um número.
+            - No footer da página deverá ser adicionado o texto “Copyright 2025”, sendo que 2025 deverá ser dinamicamente gerado. -->
+
+
+
+
+    </main>
+    <script>
+
+        class Ecommerce {
+            constructor() {
+                this.products = [];
+                this.cart = [];
+            } //class constructor tem o papel de inicializar as propriedades da classe. Aqui, ele inicializa duas propriedades: products e cart, ambas como arrays vazios. Essas propriedades serão usadas para armazenar a lista de produtos disponíveis na loja e os produtos adicionados ao carrinho de compras, respectivamente. 
+
+            addProduct(product) {
+                this.products.push(product);
+            } //O método addProduct recebe um objeto product como parâmetro e o adiciona ao array products usando o método push. Isso permite que novos produtos sejam adicionados à lista de produtos disponíveis na loja. Para adicionar um produto, você chamaria esse método e passaria um objeto que representa o produto, contendo propriedades como id, name e price. o this faz referencia ao objeto atual da classe Ecommerce. 
+
+            setProductPrice(productId, price) {
+                const product = this.getProductById(productId);
+                if (product) {
+                    product.price = price;
+                }
+            } //O método setProductPrice recebe dois parâmetros: productId e price. Ele usa o método getProductById para encontrar o produto com o ID especificado. Se o produto for encontrado (ou seja, se product não for undefined), ele atualiza a propriedade price do produto com o novo valor fornecido. Isso permite que você altere o preço de um produto existente na lista de produtos. 
+
+            getAllProducts() {
+                return this.products;
+            } //O método getAllProducts simplesmente retorna o array products, que contém todos os produtos atualmente armazenados na loja. Isso permite que você obtenha a lista completa de produtos disponíveis. 
+            // Isso porque quando foi criada a classe, foi inicializada a propriedade products como um array vazio. Todos os metodos usados ate agora como addProduct e setProductPrice manipulam esse array products. Portanto, quando chamamos getAllProducts, ele retorna o array products que foi preenchido com os produtos adicionados anteriormente usando o metodo addProduct e possivelmente modificado usando o metodo setProductPrice. 
+            getAllProductsNames() {
+                return this.products.map(p => p.name).join('; ');
+            } //O método getAllProductsNames usa o método map para criar um novo array contendo apenas os nomes dos produtos (p.name) e, em seguida, usa o método join para concatenar esses nomes em uma única string, separados por ponto e vírgula (; ). Isso permite que você obtenha uma representação em string de todos os nomes dos produtos disponíveis na loja. 
+
+            getProductById(productId) {
+                return this.products.find(p => p.id === productId);
+            } //O método getProductById recebe um parâmetro productId e usa o método find para procurar no array products um produto cujo id corresponda ao productId fornecido. Se encontrar um produto com o ID correspondente, ele o retorna; caso contrário, retorna undefined. Isso permite que você obtenha um produto específico com base no seu ID.
+
+            getProductsByPrice(initialPrice, finalPrice) {
+                return this.products.filter(p => p.price >= initialPrice && p.price <= finalPrice);
+            } //O método getProductsByPrice recebe dois parâmetros: initialPrice e finalPrice. Ele usa o método filter para criar um novo array contendo apenas os produtos cujo preço (p.price) esteja dentro do intervalo especificado, ou seja, maior ou igual a initialPrice e menor ou igual a finalPrice. Isso permite que você obtenha uma lista de produtos que atendam a um critério de preço específico. 
+
+            addProductToCart(product) {
+                this.cart.push(product);
+            } //O método addProductToCart recebe um objeto product como parâmetro e o adiciona ao array cart usando o método push. Isso permite que novos produtos sejam adicionados ao carrinho de compras. Para adicionar um produto ao carrinho, você chamaria esse método e passaria o objeto que representa o produto que deseja adicionar. 
+
+            getCartTotalPrice() {
+                return this.cart.reduce((total, product) => total + product.price, 0);
+            } //O método getCartTotalPrice usa o método reduce para calcular a soma dos preços de todos os produtos no array cart. Ele começa com um total inicial de 0 e, para cada produto no carrinho, adiciona o preço do produto (product.price) ao total acumulado. O resultado final é a soma total dos preços de todos os produtos no carrinho, que é retornada por esse método. Isso permite que você obtenha o valor total dos itens atualmente no carrinho de compras.
+        } // Num geral a classe Ecommerce encapsula a funcionalidade básica de uma loja online, permitindo a adição e gerenciamento de produtos, bem como a manipulação do carrinho de compras. Cada método da classe é projetado para cumprir uma função específica relacionada à gestão de produtos e ao carrinho, seguindo os princípios da programação orientada a objetos. Para usar essa classe, você criaria uma instância dela e chamaria os métodos conforme necessário para adicionar produtos, atualizar preços, obter listas de produtos e gerenciar o carrinho de compras. Class é diferente de function, numa function podemos criar objetos mas nao metodos e propriedades como numa class. 
+        //Num projeto real de ecommerce, essa classe poderia ser expandida com funcionalidades adicionais, como remoção de produtos, gerenciamento de estoque, autenticação de usuários, processamento de pagamentos, entre outras. Esta parte do codigo é feito por desenvolvedores backend mas os desenvolvedores frontend precisam entender como funciona para integrar com o frontend. Basicamente o frontend ira usar esta classe para interagir com os dados do ecommerce.
+
+        // Exemplo de uso da classe Ecommerce
+        const store = new Ecommerce();
+
+        // Adicionando produtos
+        store.addProduct({ id: 1, name: 'Camisola Benfica', price: 220 });
+        store.addProduct({ id: 2, name: 'Shorts jeans', price: 112 });
+        store.addProduct({ id: 3, name: 'Jaqueta de couro', price: 300 });
+
+        console.log('Todos os produtos:', store.getAllProducts());
+        console.log('Nomes dos produtos:', store.getAllProductsNames());
+
+
+        store.setProductPrice(2, 250);
+        console.log('Produto Id 2:', store.getProductById(2));
+        // Atualiza preço
+
+        console.log('Produtos entre 150 e 300:', store.getProductsByPrice(150, 300));
+        // Filtrra produtos por preço
+
+        store.addProductToCart(store.getProductById(1));
+        store.addProductToCart(store.getProductById(3));
+        // Add produtos ao carrinho
+
+        console.log('Total do carrinho:', store.getCartTotalPrice());
+
+        // Fetch API
+        async function loadProducts() {
+            const response = await fetch('https://fakestoreapi.com/products');
+            const products = await response.json();
+
+            //gallery
+            const grid = document.createElement('div');
+            grid.style.display = 'grid';
+            grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+            grid.style.gap = '20px';
+
+            // cards
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.style.border = '1px solid #ccc';
+                productCard.style.padding = '10px';
+                productCard.style.textAlign = 'center';
+
+                const img = document.createElement('img');
+                img.src = product.image;
+                img.style.width = '100px';
+
+                const name = document.createElement('h2');
+                name.textContent = product.title;
+                name.style.fontSize = '16px';
+
+
+                const price = document.createElement('p');
+                price.textContent = `$${product.price}`;
+                price.style.fontWeight = 'bold';
+                productCard.append(price);
+
+
+                const button = document.createElement('button');
+                button.textContent = 'Add to cart';
+
+                //Onclick
+                button.onclick = async () => {
+                    await fetch('https://fakestoreapi.com/carts/7', {
+                        method: 'PUT',
+                        body: JSON.stringify({
+                            userId: 1,
+                            date: new Date().toISOString().split('T')[0],
+                            products: [{ productId: product.id, quantity: 10 }]
+                        })
+                    });
+                    alert(`${product.title} adicionado ao carrinho!`);
+                };
+                productCard.appendChild(img);
+                productCard.appendChild(name);
+                productCard.appendChild(button);
+                grid.appendChild(productCard);
+            });
+            document.body.appendChild(grid);
+        }
+    </script>
+    <footer>
+        <p>&copy; <span id="year"></span></p>
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        loadProducts();
+    </script>
+</body>
+
+</html>
